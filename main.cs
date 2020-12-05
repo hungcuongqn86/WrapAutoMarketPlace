@@ -14,25 +14,6 @@ using System.Windows.Forms;
 
 namespace WrapAutoMarketPlace
 {
-    public class User
-    {
-        public string email { get; set; }
-        public string password { get; set; }
-
-        public User() { }
-        public User(string email, string pass)
-        {
-            this.email = email;
-            this.password = pass;
-        }
-    }
-
-    public class ResLogin
-    {
-        public string email { get; set; }
-        public string password { get; set; }
-    }
-
     public partial class main : Form
     {
         public main()
@@ -42,6 +23,17 @@ namespace WrapAutoMarketPlace
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            if (this.textBox1.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Phải nhập tên đăng nhập!");
+                return;
+            }
+            if (this.textBox2.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Phải nhập mật khẩu!");
+                return;
+            }
+
             await activeAsync(this.textBox1.Text, this.textBox2.Text);
         }
 

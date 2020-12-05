@@ -11,5 +11,5 @@ D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\Newtonsoft.Json.dll
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\System.Net.Http.Formatting.dll
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\Newtonsoft.Json.xml
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\System.Net.Http.Formatting.xml
-D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.User.resources
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CopyComplete
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.main.resources

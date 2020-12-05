@@ -6,12 +6,33 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WrapAutoMarketPlace
 {
+    public class User
+    {
+        public string email { get; set; }
+        public string password { get; set; }
+
+        public User() { }
+        public User(string email, string pass)
+        {
+            this.email = email;
+            this.password = pass;
+        }
+    }
+
+    public class ResLogin
+    {
+        public string email { get; set; }
+        public string password { get; set; }
+    }
+
     public partial class main : Form
     {
         public main()
@@ -19,9 +40,9 @@ namespace WrapAutoMarketPlace
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            extractAndRun("AutoMarketPlace.exe");
+            await activeAsync(this.textBox1.Text, this.textBox2.Text);
         }
 
         public static void extractAndRun(string szName)
@@ -43,6 +64,37 @@ namespace WrapAutoMarketPlace
                 File.Delete(exeFileName);
             }
             catch (Exception error) { 
+                MessageBox.Show(error.Message.ToString());
+            }
+        }        
+        
+        public static async Task activeAsync(string email, string pass)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    User user = new User() { email = email, password = pass };
+                    HttpResponseMessage response = await client.PostAsJsonAsync("api/v1/login", user);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Active
+                        // var resultArray = await response.Content.ReadAsStringAsync();
+                        extractAndRun("AutoMarketPlace.exe");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kích hoạt thất bại, xin vui lòng kiểm tra lại thông tin tài khoản và thực hiện lại!");
+                    }
+                }
+            }
+            catch (Exception error)
+            {
                 MessageBox.Show(error.Message.ToString());
             }
         }

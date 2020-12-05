@@ -1,0 +1,10 @@
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.exe.config
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.exe
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.pdb
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.Properties.Resources.resources
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.GenerateResource.cache
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CoreCompileInputs.cache
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.exe
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.pdb
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csprojAssemblyReference.cache
+D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.main.resources

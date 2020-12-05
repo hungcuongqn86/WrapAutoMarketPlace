@@ -1,0 +1,4 @@
+Mới,new
+Đã qua sử dụng - như mới,used_like_new
+Đã qua sử dụng - tốt,used_good
+Đã qua sử dụng - khá tốt,used_fair

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,18 +67,30 @@ namespace WrapAutoMarketPlace
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("http://localhost/");
+                    client.BaseAddress = new Uri("https://crm-v3.efy.vn/");
                     client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    // client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    User user = new User() { email = email, password = pass };
-                    HttpResponseMessage response = await client.PostAsJsonAsync("api/v1/login", user);
+                    FormUrlEncodedContent formContent = new FormUrlEncodedContent(new[]
+                        {
+                            new KeyValuePair<string, string>("email", email),
+                            new KeyValuePair<string, string>("password", pass)
+                        });
+                    HttpResponseMessage response = client.PostAsync("api/check-active", formContent).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
                         // Active
-                        // var resultArray = await response.Content.ReadAsStringAsync();
-                        extractAndRun("AutoMarketPlace.exe");
+                        string resultArray = await response.Content.ReadAsStringAsync();
+                        ResBody model = JsonConvert.DeserializeObject<ResBody>(resultArray);
+                        if (model.status == 200)
+                        {
+                            extractAndRun("xxxyyyz.exe");
+                        }
+                        else
+                        {
+                            MessageBox.Show(model.message);
+                        }
                     }
                     else
                     {

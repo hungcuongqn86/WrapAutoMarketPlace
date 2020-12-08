@@ -28,4 +28,10 @@ namespace WrapAutoMarketPlace
         public string email { get; set; }
         public string password { get; set; }
     }
+
+    public class ResBody
+    {
+        public int status { get; set; }
+        public string message { get; set; }
+    }
 }

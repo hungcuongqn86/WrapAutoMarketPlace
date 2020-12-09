@@ -13,3 +13,17 @@ D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\Newtonsoft.Json.xml
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\bin\Debug\System.Net.Http.Formatting.xml
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CopyComplete
 D:\App\AutoMarketPlace\Wrap\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.main.resources
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.exe.config
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.exe
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\WrapAutoMarketPlace.pdb
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\Newtonsoft.Json.dll
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\System.Net.Http.Formatting.dll
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\Newtonsoft.Json.xml
+D:\APP\Tool\WrapAutoMarketPlace\bin\Debug\System.Net.Http.Formatting.xml
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.main.resources
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.Properties.Resources.resources
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.GenerateResource.cache
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CoreCompileInputs.cache
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CopyComplete
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.exe
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.pdb

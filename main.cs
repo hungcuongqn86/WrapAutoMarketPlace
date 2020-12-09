@@ -27,18 +27,20 @@ namespace WrapAutoMarketPlace
             if (this.textBox1.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Phải nhập tên đăng nhập!");
+                this.textBox1.Focus();
                 return;
             }
             if (this.textBox2.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Phải nhập mật khẩu!");
+                this.textBox2.Focus();
                 return;
             }
 
             await activeAsync(this.textBox1.Text, this.textBox2.Text);
         }
 
-        public static void extractAndRun(string szName)
+        public void extractAndRun(string szName)
         {
             try
             {
@@ -51,7 +53,7 @@ namespace WrapAutoMarketPlace
                     byte[] bytes = WrapAutoMarketPlace.Properties.Resources.GetAutoMarketPlace_2_0_0_9();
                     fsDst.Write(bytes, 0, bytes.Length);
                 }
-
+                Close();
                 Process x = Process.Start(exeFileName);
                 x.WaitForExit();
                 File.Delete(exeFileName);
@@ -59,9 +61,9 @@ namespace WrapAutoMarketPlace
             catch (Exception error) { 
                 MessageBox.Show(error.Message.ToString());
             }
-        }        
+        }
         
-        public static async Task activeAsync(string email, string pass)
+        public async Task activeAsync(string email, string pass)
         {
             try
             {

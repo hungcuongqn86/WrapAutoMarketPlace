@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -17,27 +19,10 @@ namespace WrapAutoMarketPlace
 {
     public partial class main : Form
     {
+        List<HardDrive> hdCollection = new List<HardDrive>();
         public main()
         {
             InitializeComponent();
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            if (this.textBox1.Text.Trim() == String.Empty)
-            {
-                MessageBox.Show("Phải nhập tên đăng nhập!");
-                this.textBox1.Focus();
-                return;
-            }
-            if (this.textBox2.Text.Trim() == String.Empty)
-            {
-                MessageBox.Show("Phải nhập mật khẩu!");
-                this.textBox2.Focus();
-                return;
-            }
-
-            await activeAsync(this.textBox1.Text, this.textBox2.Text);
         }
 
         public void extractAndRun(string szName)
@@ -63,7 +48,7 @@ namespace WrapAutoMarketPlace
             }
         }
         
-        public async Task activeAsync(string email, string pass)
+        public async Task activeAsync(string serial_number)
         {
             try
             {
@@ -71,13 +56,11 @@ namespace WrapAutoMarketPlace
                 {
                     client.BaseAddress = new Uri("https://crm-v3.efy.vn/");
                     client.DefaultRequestHeaders.Accept.Clear();
-                    // client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Add("Authorization", "Bearer N2UyNTQ2YjE1NTFj");
 
-                    FormUrlEncodedContent formContent = new FormUrlEncodedContent(new[]
-                        {
-                            new KeyValuePair<string, string>("email", email),
-                            new KeyValuePair<string, string>("password", pass)
-                        });
+                    FormUrlEncodedContent formContent = new FormUrlEncodedContent(new[] {
+                            new KeyValuePair<string, string>("serial", serial_number)
+                    });
                     HttpResponseMessage response = client.PostAsync("api/check-active", formContent).Result;
 
                     if (response.IsSuccessStatusCode)
@@ -92,18 +75,44 @@ namespace WrapAutoMarketPlace
                         else
                         {
                             MessageBox.Show(model.message);
+                            this.label1.Text = model.message;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Kích hoạt thất bại, xin vui lòng kiểm tra lại thông tin tài khoản và thực hiện lại!");
+                        this.label1.Text = "Kích hoạt thất bại, xin vui lòng liên hệ với nhà cung cấp dịch vụ!";
+                        MessageBox.Show("Kích hoạt thất bại, xin vui lòng liên hệ với nhà cung cấp dịch vụ!");
                     }
+                    
                 }
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message.ToString());
             }
+        }
+
+        private void GetAllDiskDrives()
+        {
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+
+            foreach (ManagementObject wmi_HD in searcher.Get())
+            {
+                HardDrive hd = new HardDrive();
+                hd.Model = wmi_HD["Model"].ToString();
+                hd.InterfaceType = wmi_HD["InterfaceType"].ToString();
+                hd.Caption = wmi_HD["Caption"].ToString();
+                hd.SerialNo = wmi_HD.GetPropertyValue("SerialNumber").ToString().Trim();
+                hdCollection.Add(hd);
+            }
+        }
+
+        private async void main_Load(object sender, EventArgs e)
+        {
+            this.label1.Text = "Đang kiểm tra phiên bản ứng dụng ....";
+            GetAllDiskDrives();
+            HardDrive hd = hdCollection.First();
+            await activeAsync(hd.SerialNo);
         }
     }
 }

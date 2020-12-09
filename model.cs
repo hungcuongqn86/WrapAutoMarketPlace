@@ -10,23 +10,12 @@ namespace WrapAutoMarketPlace
     {
     }
 
-    public class User
+    public class HardDrive
     {
-        public string email { get; set; }
-        public string password { get; set; }
-
-        public User() { }
-        public User(string email, string pass)
-        {
-            this.email = email;
-            this.password = pass;
-        }
-    }
-
-    public class ResLogin
-    {
-        public string email { get; set; }
-        public string password { get; set; }
+        public string Model { get; set; }
+        public string InterfaceType { get; set; }
+        public string Caption { get; set; }
+        public string SerialNo { get; set; }
     }
 
     public class ResBody

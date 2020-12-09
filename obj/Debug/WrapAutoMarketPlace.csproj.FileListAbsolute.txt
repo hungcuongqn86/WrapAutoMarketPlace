@@ -27,3 +27,4 @@ D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CoreCompile
 D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csproj.CopyComplete
 D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.exe
 D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.pdb
+D:\APP\Tool\WrapAutoMarketPlace\obj\Debug\WrapAutoMarketPlace.csprojAssemblyReference.cache
